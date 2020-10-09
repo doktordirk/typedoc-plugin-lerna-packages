@@ -119,7 +119,7 @@ export class LernaPackagesPlugin extends ConverterComponent {
         }
 
         for (const child of copyChildren) {
-            if (this.pathExclude.some(pkg => child.originalName.includes(pkg))) continue;
+            if (!child.originalName || this.pathExclude.some(pkg => child.originalName.includes(pkg))) continue;
             const lernaPackageName = findLernaPackageForChildOriginalName(child.originalName);
 
             if (!lernaPackageModules[lernaPackageName]) {
